@@ -67,18 +67,16 @@ public class AccelerometerStoreListener implements SensorEventListener {
 			mLastY = y;
 			mLastZ = z;
 			mInitialized = true;
+		} else {
+			if (Math.abs(mLastX - x) <= minDiff) x = mLastX; // if delta < NOISE then use previous value
+			if (Math.abs(mLastY - y) <= minDiff) y = mLastY; // if delta < NOISE then use previous value
+			if (Math.abs(mLastZ - z) <= minDiff) z = mLastZ; // if delta < NOISE then use previous value
 		}
-		float deltaX = Math.abs(mLastX - x);
-		float deltaY = Math.abs(mLastY - y);
-		float deltaZ = Math.abs(mLastZ - z);
-		if (deltaX <= minDiff) x = mLastX; // if delta < NOISE then use previous value
-		if (deltaY <= minDiff) y = mLastY; // if delta < NOISE then use previous value
-		if (deltaZ <= minDiff) z = mLastZ; // if delta < NOISE then use previous value
 		// update last value for next onSensorChanged
 		mLastX = x;
 		mLastY = y;
 		mLastZ = z;
-		db.saveSample(x, y, z, event.timestamp, action, sensorDelay, accelerometer_position);
+		db.saveSample(x, y, z, event.timestamp, action, sensorDelay, accelerometer_position, minDiff);
 	}
 
 	@Override

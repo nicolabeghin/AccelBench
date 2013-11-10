@@ -60,16 +60,16 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
+        android:layout_gravity="center"
         android:text="Accelerometer position"
         android:textStyle="bold" />
 
     <RadioGroup
         android:id="@+id/radioAccelerometerPosition"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:baselineAligned="false"
-        android:gravity="center"
         android:orientation="horizontal" >
 
         <RadioButton
@@ -91,6 +91,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginBottom="10dp"
         android:orientation="vertical" >
 
@@ -98,19 +99,20 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:layout_gravity="center|center_horizontal"
             android:text="Min sampling delta"
             android:textStyle="bold" />
 
         <EditText
             android:id="@+id/minDiff"
-            android:layout_width="80dp"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:layout_gravity="center"
             android:ems="10"
             android:hint="0"
             android:inputType="numberDecimal"
-            android:text="0" >
+            android:text="25"
+            android:textAlignment="center" >
 
             <requestFocus />
         </EditText>

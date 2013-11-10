@@ -12,7 +12,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_TABLE="samples";
     private static final String DATABASE_NAME="accelbench.db";
-    private static final int SCHEMA=4;
+    private static final int SCHEMA=5;
 
     public static String getDatabaseTable() {
         return DATABASE_TABLE;
@@ -28,7 +28,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE IF NOT EXISTS \""+DATABASE_TABLE+"\" (\"x\" REAL,\"y\" REAL,\"z\" REAL,\"action\" TEXT, \"delay\" INTEGER, \"timestamp\" INTEGER, \"trunk\" INTEGER, \"step\" INTEGER, \"mode\" TEXT);");
+        db.execSQL("CREATE TABLE IF NOT EXISTS \""+DATABASE_TABLE+"\" (\"x\" REAL,\"y\" REAL,\"z\" REAL,\"action\" TEXT, \"delay\" INTEGER, \"timestamp\" INTEGER, \"trunk\" INTEGER, \"step\" INTEGER, \"mode\" TEXT, \"mindiff\" FLOAT);");
     }
 
     @Override
