@@ -34,7 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Classifier output"
+                android:text="Classifier output: no output yet"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <TextView
@@ -50,10 +50,71 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Sampling rate: 0Hz"
+                android:text="Sampling rate: not detected yet"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
         </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Accelerometer position"
+        android:textStyle="bold" />
+
+    <RadioGroup
+        android:id="@+id/radioAccelerometerPosition"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/radioManoMode"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:checked="true"
+            android:text="In mano" />
+
+        <RadioButton
+            android:id="@+id/radioTascaMode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:checked="false"
+            android:text="Tasca" />
+    </RadioGroup>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Min sampling delta"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/minDiff"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:ems="10"
+            android:hint="0"
+            android:inputType="numberDecimal"
+            android:text="0" >
+
+            <requestFocus />
+        </EditText>
+
     </LinearLayout>
 
     <LinearLayout
@@ -110,12 +171,14 @@
                 android:checked="false"
                 android:text="Scale giù" />
         </RadioGroup>
+
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/nonstairsWrapper"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp" >
 
         <Button
             android:id="@+id/btnStartSamplingAltro"

@@ -10,13 +10,15 @@ public class Sample {
     final private double valueY;
     final private double valueZ;
     final private double valueV;
+    final private String mode;
 
-    public Sample(long time, double valueX, double valueY, double valueZ) {
+    public Sample(long time, double valueX, double valueY, double valueZ, String mode) {
         this.time = time;
         this.valueX = valueX;
         this.valueY = valueY;
         this.valueZ = valueZ;
         this.valueV = Math.sqrt(Math.pow(valueX, 2) + Math.pow(valueY, 2) + Math.pow(valueZ, 2));
+        this.mode=mode;
     }
 
     public long getTime() {

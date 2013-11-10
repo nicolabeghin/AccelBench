@@ -28,6 +28,7 @@ public class DbAdapter {
         public static final String KEY_action = "action";
         public static final String KEY_delay = "delay";
         public static final String KEY_trunk = "trunk";
+        public static final String KEY_mode = "mode";
 
         public DbAdapter(Context context) {
             this.context = context;
@@ -49,7 +50,7 @@ public class DbAdapter {
             return database.getPath();
         }
 
-        private ContentValues createContentValues(float x, float y, float z, long timestamp, String action, int delay, int trunk) {
+        private ContentValues createContentValues(float x, float y, float z, long timestamp, String action, int delay, int trunk, String mode) {
             ContentValues values = new ContentValues();
             values.put(KEY_x, x);
             values.put(KEY_y, y);
@@ -58,6 +59,7 @@ public class DbAdapter {
             values.put(KEY_action, action);
             values.put(KEY_delay, delay);
             values.put(KEY_trunk, trunk);
+            values.put(KEY_mode, mode);
             return values;
         }
 
@@ -71,8 +73,8 @@ public class DbAdapter {
         }
 
         //create a contact
-        public long saveSample(float x, float y, float z, long timestamp, String action, int sensorDelay) {
-            return database.insertOrThrow(DATABASE_TABLE, null, createContentValues(x,y,z,timestamp, action, sensorDelay, trunk));
+        public long saveSample(float x, float y, float z, long timestamp, String action, int sensorDelay, String mode) {
+            return database.insertOrThrow(DATABASE_TABLE, null, createContentValues(x,y,z,timestamp, action, sensorDelay, trunk, mode));
         }
 
         public void cleanDb() {

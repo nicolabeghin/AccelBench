@@ -65,6 +65,16 @@ public class SamplingStoreService extends IntentService {
             Log.i(MainActivity.AppName, "No action detected.");
         }
         try {
+            accelerometerListener.setAccelerometerPosition(intent.getExtras().getString(MainActivity.ACCELEROMETER_POSITION_ACTION));
+        } catch (NullPointerException e) {
+            Log.i(MainActivity.AppName, "No accelerometer position detected.");
+        }
+        try {
+            accelerometerListener.setMinDiff(intent.getExtras().getFloat(MainActivity.ACCELEROMETER_MIN_DIFF));
+        } catch (Exception e) {
+            Log.i(MainActivity.AppName, "No accelerometer min diff detected.");
+        }
+        try {
             sensorDelay = intent.getExtras().getInt(MainActivity.SAMPLING_DELAY);
             accelerometerListener.setSensorDelay(sensorDelay);
         } catch (NullPointerException e) {

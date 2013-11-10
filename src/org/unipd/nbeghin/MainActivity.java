@@ -18,6 +18,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,6 +46,8 @@ public class MainActivity extends Activity {
     public static final String SAMPLING_TYPE_STAIR_DOWNSTAIRS = "STAIR_DOWNSTAIRS";
     public static final String SAMPLING_TYPE_NON_STAIR = "NON_STAIR";
     public static final String SAMPLING_DELAY="DELAY";
+	public static final String	ACCELEROMETER_POSITION_ACTION	= "org.unipd.nbeghin.accelerometer.position";
+	public static final String	ACCELEROMETER_MIN_DIFF	= "org.unipd.nbeghin.accelerometer.min_diff";
     private boolean samplingEnabled=false;
     private double detectedSamplingRate=0;
     private double minimumSamplingRate=13;
@@ -109,9 +112,26 @@ public class MainActivity extends Activity {
         v.setEnabled(false); // disable start button
         ((Button) findViewById(R.id.btnStopSamplingAltro)).setEnabled(true); // enable stop button
         backgroundStoreSampler.putExtra(SAMPLING_TYPE, SAMPLING_TYPE_NON_STAIR);
+        setGeneralSamplingParams();
         startSamplingService();
     }
 
+    private void setGeneralSamplingParams() {
+    	// accelerometer position
+        int selectedId = ((RadioGroup) findViewById(R.id.radioAccelerometerPosition)).getCheckedRadioButtonId();
+        switch(selectedId) {
+        	case R.id.radioManoMode: backgroundStoreSampler.putExtra(ACCELEROMETER_POSITION_ACTION, "MANO"); break;
+        	case R.id.radioTascaMode: backgroundStoreSampler.putExtra(ACCELEROMETER_POSITION_ACTION, "TASCA"); break;
+        }
+        // accelerometer min diff
+        try {
+        	float minDiff=Float.parseFloat(((EditText) findViewById(R.id.minDiff)).getText().toString());
+        	backgroundStoreSampler.putExtra(ACCELEROMETER_MIN_DIFF, minDiff);
+        } catch(Exception e) {
+        	Log.e(AppName, "Unable to set min diff: "+e.getMessage());
+        }
+    }
+    
     public void onBtnStopSamplingAltro(View v) {
         stopService(backgroundStoreSampler); // stop background server
         samplingEnabled=false;
@@ -129,6 +149,7 @@ public class MainActivity extends Activity {
             case R.id.radioDownstairs: backgroundStoreSampler.putExtra(SAMPLING_TYPE, SAMPLING_TYPE_STAIR_DOWNSTAIRS); break;
             case R.id.radioUpstairs: backgroundStoreSampler.putExtra(SAMPLING_TYPE, SAMPLING_TYPE_STAIR_UPSTAIRS); break;
         }
+        setGeneralSamplingParams();
         startSamplingService();
     }
 

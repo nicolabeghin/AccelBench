@@ -44,7 +44,7 @@ public class AccelerometerClassifyListener implements SensorEventListener {
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        buffer.add(new Sample(event.timestamp, event.values[0], event.values[1], event.values[2]));
+        buffer.add(new Sample(event.timestamp, event.values[0], event.values[1], event.values[2], null));
     }
 
     @Override
