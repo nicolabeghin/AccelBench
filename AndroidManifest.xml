@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.unipd.nbeghin"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="10"
+        android:targetSdkVersion="17" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme"
+         >
+        <service
+            android:name=".services.SamplingStoreService"
+            android:exported="false" />
+        <service
+            android:name=".services.SamplingClassifyService"
+            android:exported="false" />
+        <service
+            android:name=".services.SamplingRateDetectorService"
+            android:exported="false" />
+        <activity
+            android:name="org.unipd.nbeghin.MainActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="org.unipd.nbeghin.SettingsActivity"
+            android:label="@string/title_activity_settings" >
+        </activity>
+    </application>
+</manifest>

@@ -1,0 +1,14 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/action_cleardb"
+          android:title="Clear db"
+          android:onClick="onBtnClearDb"
+      />
+    <item android:id="@+id/action_upload_db"
+          android:title="Share db"
+          android:onClick="onBtnUploadDb"
+      />
+    <item android:id="@+id/action_stop_all_services"
+        android:title="Stop all services"
+        android:onClick="onBtnStopAllServices"
+        />
+</menu>
