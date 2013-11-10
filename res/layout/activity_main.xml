@@ -111,7 +111,7 @@
             android:ems="10"
             android:hint="0"
             android:inputType="numberDecimal"
-            android:text="25"
+            android:text="0"
             android:textAlignment="center" >
 
             <requestFocus />

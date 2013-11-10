@@ -68,9 +68,9 @@ public class AccelerometerStoreListener implements SensorEventListener {
 			mLastZ = z;
 			mInitialized = true;
 		} else {
-			if (Math.abs(mLastX - x) <= minDiff) x = mLastX; // if delta < NOISE then use previous value
-			if (Math.abs(mLastY - y) <= minDiff) y = mLastY; // if delta < NOISE then use previous value
-			if (Math.abs(mLastZ - z) <= minDiff) z = mLastZ; // if delta < NOISE then use previous value
+			if (Math.abs(mLastX - x) < minDiff) x = mLastX; // if delta < NOISE then use previous value
+			if (Math.abs(mLastY - y) < minDiff) y = mLastY; // if delta < NOISE then use previous value
+			if (Math.abs(mLastZ - z) < minDiff) z = mLastZ; // if delta < NOISE then use previous value
 		}
 		// update last value for next onSensorChanged
 		mLastX = x;
