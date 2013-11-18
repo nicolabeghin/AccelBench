@@ -87,10 +87,10 @@ public class MainActivity extends Activity {
                 unregisterReceiver(this);
                 stopService(backgroundSamplingRateDetector);
             } else { // sampling rate not high enough: try to decrease the sampling delay
-                if (backgroundSamplingRateDetector.getExtras().getInt(MainActivity.SAMPLING_DELAY)!=SensorManager.SENSOR_DELAY_GAME) {
+                if (backgroundSamplingRateDetector.getExtras().getInt(MainActivity.SAMPLING_DELAY)!=SensorManager.SENSOR_DELAY_UI) {
                     Log.w(MainActivity.AppName, "Sampling rate not high enough: trying decreasing the sampling delay");
                     stopService(backgroundSamplingRateDetector);
-                    backgroundSamplingRateDetector.putExtra(SAMPLING_DELAY, SensorManager.SENSOR_DELAY_GAME);
+                    backgroundSamplingRateDetector.putExtra(SAMPLING_DELAY, SensorManager.SENSOR_DELAY_UI);
                     startService(backgroundSamplingRateDetector);
                 } else { // unable to determine a sampling rate high enough for our purposes: stop
                     Log.e(MainActivity.AppName, "Sampling rate not high enough for this application");
